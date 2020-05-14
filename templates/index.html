@@ -1,5 +1,37 @@
 {% extends 'base.html' %} {% block body %}
-<div class="d-flex justify-content-center align-items-center" style="height: 100px;">
-    <h1>Covid19 Visualizer</h1>
+<div class="container" style="height: 100%; background-color: #ca0b00; color: #fff;">
+    <div class="row justify-content-md-center">
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h1 style="padding: 10px;">Covid19 Visualizer</h1>
+        </div>
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h3>New Confirmed: {{datas['NewConfirmed']}}</h3>
+        </div>
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h3>Total Confirmed: {{datas.TotalConfirmed}}</h3>
+        </div>
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h3>New Death: {{datas.NewDeaths}}</h3>
+        </div>
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h3>New Recovered: {{datas.NewRecovered}}</h3>
+        </div>
+        <div class="col-12" style="text-align: center; padding: 15px;">
+            <h3>Total Recovered: {{datas.TotalRecovered}}</h3>
+        </div>
+        <div class="col-4" style="text-align: center; padding: 15px;">
+            <form action="/country-statistic" method="GET">
+                <div class="form-group">
+                    <label for="country">Select Country</label>
+                    <select class="form-control" id="country" name="country">
+                        {% for country in countries %}
+                        <option>{{ country.Country}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Search for Statistics</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
