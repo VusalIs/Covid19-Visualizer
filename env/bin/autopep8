@@ -1,4 +1,4 @@
-#!/Users/vusalismayilov/Desktop/projects/covid19/env/bin/python3.8
+#!/Users/vusalismayilov/Desktop/projects/covid19/env/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
