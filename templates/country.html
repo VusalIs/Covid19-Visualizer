@@ -15,10 +15,9 @@
             <div class="row">
                 <h3 style="padding: 15px;">Daily Statistics</h3>
                 <div class="col-12" style="border: 1px solid;">
-                    <h5 style="padding: 15px;">Confirmed Cases: {{summaryData.Confirmed}}</h5>
-                    <h5 style="padding: 15px;">Total Death: {{summaryData.Deaths}}</h5>
-                    <h5 style="padding: 15px;">Total Recovered: {{summaryData.Recovered}}</h5>
-                    <h5 style="padding: 15px;">Active Cases: {{summaryData.Active}}</h5>
+                    <h5 style="padding: 15px;">New Cases: +{{newCases.NewConfirmed}}</h5>
+                    <h5 style="padding: 15px;">New Deaths: +{{newCases.NewDeaths}}</h5>
+                    <h5 style="padding: 15px;">New Recovered: +{{newCases.NewRecovered}}</h5>
                 </div>
             </div>
         </div>
@@ -35,7 +34,7 @@
         return { x: new Date(val.x), y: val.y}
     })
     var chart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
 
         // The data for our dataset
         data: {
@@ -55,7 +54,7 @@
                     {
                         type: 'time',
                         time: {
-                            unit: 'month',
+                            unit: 'day'
                         },
                     },
                 ],
