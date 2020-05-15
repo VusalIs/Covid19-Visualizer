@@ -5,7 +5,7 @@
             <h1 style="padding: 10px;">Covid19 Visualizer</h1>
         </div>
         <div class="col-12" style="text-align: center; padding: 15px;">
-            <h3>New Confirmed: {{datas['NewConfirmed']}}</h3>
+            <h3>New Confirmed: {{datas.NewConfirmed}}</h3>
         </div>
         <div class="col-12" style="text-align: center; padding: 15px;">
             <h3>Total Confirmed: {{datas.TotalConfirmed}}</h3>
@@ -25,7 +25,7 @@
                     <label for="country">Select Country</label>
                     <select class="form-control" id="country" name="country">
                         {% for country in countries %}
-                        <option>{{ country.Country}}</option>
+                        <option value="{{country.Slug}}">{{ country.Country}}</option>
                         {% endfor %}
                     </select>
                 </div>

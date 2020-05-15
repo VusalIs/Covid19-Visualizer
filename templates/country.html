@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% block body %}
+
+<div class="container-fluid" style="height: 100%; background-color: #ca0b00; color: #fff;">
+    <div class="row">
+        <div class="col-3">
+            <div class="row" style="border: 1px solid;">
+                <h3 style="padding: 15px;">General Statistics</h3>
+                <div class="col-12" style="border: 1px solid;">
+                    <h5 style="padding: 15px;">Confirmed Cases: {{summaryData.Confirmed}}</h5>
+                    <h5 style="padding: 15px;">Total Death: {{summaryData.Deaths}}</h5>
+                    <h5 style="padding: 15px;">Total Recovered: {{summaryData.Recovered}}</h5>
+                    <h5 style="padding: 15px;">Active Cases: {{summaryData.Active}}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <h3 style="padding: 15px;">Daily Statistics</h3>
+                <div class="col-12" style="border: 1px solid;">
+                    <h5 style="padding: 15px;">Confirmed Cases: {{summaryData.Confirmed}}</h5>
+                    <h5 style="padding: 15px;">Total Death: {{summaryData.Deaths}}</h5>
+                    <h5 style="padding: 15px;">Total Recovered: {{summaryData.Recovered}}</h5>
+                    <h5 style="padding: 15px;">Active Cases: {{summaryData.Active}}</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-9" style="background-color: #fff; color: #ca0b00;">
+            <h1>{{country}}</h1>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+</div>
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var infectedArr = {{infectedPeopleDaily | tojson}};
+    var infectedChartData = infectedArr.map(val => {
+        return { x: new Date(val.x), y: val.y}
+    })
+    var chart = new Chart(ctx, {
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            datasets: [
+                {
+                    label: 'Infected People',
+                    backgroundColor: '#ca0b00',
+                    data: infectedChartData
+                },
+            ],
+        },
+
+        // Configuration options go here
+        options: {
+            scales: {
+                xAxes: [
+                    {
+                        type: 'time',
+                        time: {
+                            unit: 'month',
+                        },
+                    },
+                ],
+            },
+        },
+    });
+</script>
+{% endblock %}
