@@ -2,10 +2,9 @@ from flask import Flask, render_template, request
 from datetime import datetime
 import requests
 
-app = Flask(__name__)
-
-
 # Routes
+
+
 @app.route('/')
 def index():
     globalSummary = getGlobalStatistics()
@@ -45,5 +44,5 @@ def getDailyStatByCountry(country):
     return requests.get('https://api.covid19api.com/dayone/country/{}'.format(country)).json()
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def create_app():
+    app = Flask(__name__)
