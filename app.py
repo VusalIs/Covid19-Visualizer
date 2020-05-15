@@ -45,5 +45,5 @@ def getDailyStatByCountry(country):
     return requests.get('https://api.covid19api.com/dayone/country/{}'.format(country)).json()
 
 
-def startApp():
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=app.config['DEBUG'], port=app.config['PORT'])
